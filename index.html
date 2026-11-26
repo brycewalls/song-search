@@ -149,6 +149,8 @@
         <option value="S">Solo artists</option>
         <option value="W">WOW Hits 2000 to 2008</option>
         <option value="G">Groups</option>
+        <option value="X">More Christian artists</option>
+        <option value="M">Mainstream pop and rock</option>
       </select>
       <select id="artSel" aria-label="Artist"><option value="">All artists</option></select>
       <select id="stSel" aria-label="Status">
@@ -166,7 +168,7 @@
 <script>
 (function () {
   "use strict";
-  var SECTION_NAMES = { S: "Solo artists", W: "WOW Hits 2000 to 2008", G: "Groups" };
+  var SECTION_NAMES = { S: "Solo artists", W: "WOW Hits 2000 to 2008", G: "Groups", X: "More Christian artists", M: "Mainstream pop and rock" };
   var songs = [], byId = {}, progress = {}, view = [], current = null, history = [];
   var player = null, playerReady = false, started = false, autoTimer = null, saveTimer = null;
   var STANDALONE = !!window.SONGS, popMode = false, ytRequested = false;
@@ -262,7 +264,9 @@
     $("nowMeta").textContent = current.a + ", " + current.al + " (" + current.y + ")";
     var links = [];
     if (current.v) { links.push('<a href="https://www.youtube.com/watch?v=' + current.v + '" target="_blank" rel="noopener">Open on YouTube</a>'); }
-    links.push('<a href="https://open.spotify.com/track/' + current.sp + '" target="_blank" rel="noopener">Open on Spotify</a>');
+    links.push(current.sp
+      ? '<a href="https://open.spotify.com/track/' + current.sp + '" target="_blank" rel="noopener">Open on Spotify</a>'
+      : '<a href="https://open.spotify.com/search/' + encodeURIComponent(current.a + " " + current.t) + '" target="_blank" rel="noopener">Search on Spotify</a>');
     $("nowLinks").innerHTML = links.join("");
   }
   function showOverlay(html, withStart) {

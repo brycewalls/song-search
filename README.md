@@ -5,7 +5,7 @@ A one-page tool for auditioning a long list of early-2000s Christian songs by th
 Each song plays from the first second through YouTube. Mark it "Not it," "Maybe," or "This is it," and the next one starts.
 
 - `index.html` is the whole page.
-- `songs.json` is the song list (title, artist, album, year, YouTube ID, Spotify ID).
+- `songs.json` is the song list (title, artist, album, year, YouTube ID, and Spotify ID where known). Sections: S solo artists, W WOW Hits, G groups, X more Christian artists, M mainstream pop and rock.
 - `progress.json` is the starting set of marks. On the live site, new marks save in your browser.
 - `server.py` is an optional local server (`python3 server.py 8797`) that saves marks to `progress.json` instead.
 
